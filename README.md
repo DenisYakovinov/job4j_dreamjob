@@ -1,0 +1,13 @@
+# job4j_pooh
+
+<p>
+Spring Boot Dream Job - job exchange application.<br>
+There are two types of users in the system: candidates and personnel officers.<br>
+
+Candidates:<br>
+publish a resume.<br>
+may apply for a job.<br>
+HR:<br>
+post job vacancies.<br>
+can invite a candidate for a vacancy.<br>
+</p>
