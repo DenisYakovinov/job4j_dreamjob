@@ -24,17 +24,21 @@
 <div class="container">
     <div class="row">
         <table class="table">
-            <caption>posts</caption>
+            <caption>candidates</caption>
             <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">name</th>
+                <th scope="col">description</th>
+                <th scope="col">created</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="post: ${posts}">
-                <td th:text="${post.id}"/>
-                <td th:text="${post.name}"/>
+            <tr th:each="candidate: ${candidates}">
+                <td th:text="${candidate.id}"/>
+                <td th:text="${candidate.name}"/>
+                <td th:text="${candidate.description}"/>
+                <td th:text="${#temporals.format(candidate.created, 'dd-MM-yyyy')}"/>
             </tr>
             </tbody>
         </table>
