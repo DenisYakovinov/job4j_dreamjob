@@ -19,17 +19,33 @@
 </head>
 <body>
 <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Dream job</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" th:href="@{/index}">Main<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" th:href="@{/posts}">Posts</a>
+                <a class="nav-item nav-link" th:href="@{/candidates}">Candidates</a>
+                <a class="nav-item nav-link" th:href="@{/formAddPost}">Add a post</a>
+                <a class="nav-item nav-link" th:href="@{/formAddCandidate}">Add new candidate</a>
+            </div>
+        </div>
+    </nav>
+    <br>
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header text-white bg-dark">
                 new post
             </div>
             <div class="card-body">
-                <form>
+                <form th:action="@{/createPost}" method="POST">
                     <div class="form-group">
-                        <label>name
-                            <input type="text" class="form-control">
-                        </label>
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" id="name">
+                        <input type="hidden" name="id" value="0"/>
                     </div>
                     <button type="submit" class="btn btn-primary bg-dark border-dark">save</button>
                 </form>

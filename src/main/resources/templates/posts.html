@@ -22,6 +22,22 @@
 </head>
 <body>
 <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Dream job</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" th:href="@{/index}">Main<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" th:href="@{/posts}">Posts</a>
+                <a class="nav-item nav-link" th:href="@{/candidates}">Candidates</a>
+                <a class="nav-item nav-link" th:href="@{/formAddPost}">Add a post</a>
+                <a class="nav-item nav-link" th:href="@{/formAddCandidate}">Add new candidate</a>
+            </div>
+        </div>
+    </nav>
+    <br>
     <div class="row">
         <table class="table">
             <caption>posts</caption>
