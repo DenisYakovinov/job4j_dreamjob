@@ -1,4 +1,4 @@
-# job4j_pooh
+# job4j_dreamjob
 [![Java CI with Maven](https://github.com/DenisYakovinov/job4j_dreamjob/actions/workflows/maven.yml/badge.svg)](https://github.com/DenisYakovinov/job4j_dreamjob/actions/workflows/maven.yml)
 <p>
 Spring Boot Dream Job - job exchange application.<br>
