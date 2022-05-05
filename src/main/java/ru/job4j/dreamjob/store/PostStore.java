@@ -33,6 +33,7 @@ public class PostStore {
         posts.putIfAbsent(post.getId(), post);
     }
 
+    /*update with the same id*/
     public void update(Post post) {
         posts.put(post.getId(), post);
     }
