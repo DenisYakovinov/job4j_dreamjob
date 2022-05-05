@@ -43,8 +43,12 @@
             <div class="card-body">
                 <form th:action="@{/createPost}" method="POST">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" id="name">
+                        <label for="name">Name
+                            <input type="text" class="form-control" name="name" id="name">
+                        </label>
+                        <label for="description">description
+                            <input type="text" class="form-control" name="description" id="description">
+                        </label>
                         <input type="hidden" name="id" value="0"/>
                     </div>
                     <button type="submit" class="btn btn-primary bg-dark border-dark">save</button>

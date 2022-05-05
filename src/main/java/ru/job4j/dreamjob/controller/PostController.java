@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ru.job4j.dreamjob.model.Post;
 import ru.job4j.dreamjob.store.PostStore;
 
+import java.time.LocalDate;
+
 @Controller
 public class PostController {
     private final PostStore store = PostStore.instOf();
@@ -21,12 +23,13 @@ public class PostController {
 
     @GetMapping("/formAddPost")
     public String addPost(Model model) {
-        model.addAttribute("post", new Post(0, "Fill the field"));
+        model.addAttribute("post", new Post(0, "Fill the field", "fill", LocalDate.now()));
         return "addPost";
     }
 
     @PostMapping("/createPost")
     public String createPost(@ModelAttribute Post post) {
+        post.setCreated(LocalDate.now());
         store.create(post);
         return "redirect:/posts";
     }
