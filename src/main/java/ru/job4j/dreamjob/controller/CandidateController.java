@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 @Controller
 public class CandidateController {
-      CandidateStore candidateStore = CandidateStore.instOf();
+      private final CandidateStore candidateStore = CandidateStore.instOf();
 
       @GetMapping("/candidates")
       public String candidates(Model model) {
