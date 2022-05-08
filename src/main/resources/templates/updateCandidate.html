@@ -41,7 +41,7 @@
                 edit candidate
             </div>
             <div class="card-body">
-                <form th:action="@{/updateCandidate}" method="POST" th:object="${candidate}">
+                <form th:action="@{/updateCandidate}" method="POST" th:object="${candidate}" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="hidden" name="id" th:field="*{id}"/>
                         <input type="hidden" name="created" th:field="*{created}"/>
@@ -51,6 +51,10 @@
                         <label>description
                             <input type="text" class="form-control" name="description" id="description" th:field="*{description}">
                         </label>
+                    </div>
+                    <div class="col-form-label">
+                        <label for="name">photo</label>
+                        <input type="file" class="col-form-label" name="file" id="file">
                     </div>
                     <button type="submit" class="btn btn-primary bg-dark border-dark">save</button>
                 </form>

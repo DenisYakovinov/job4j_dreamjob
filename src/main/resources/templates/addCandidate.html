@@ -41,7 +41,7 @@
                 new candidate
             </div>
             <div class="card-body">
-                <form th:action="@{/createCandidate}" method="POST">
+                <form th:action="@{/createCandidate}" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>name
                             <input type="text" class="form-control" name="name" id="name">
@@ -50,6 +50,10 @@
                             <input type="text" class="form-control" name="description" id="description">
                         </label>
                         <input type="hidden" name="id" value="0"/>
+                    </div>
+                    <div class="col-form-label">
+                        <label for="name">photo</label>
+                        <input type="file" class="col-form-label" name="file" id="file">
                     </div>
                     <button type="submit" class="btn btn-primary bg-dark border-dark">save</button>
                 </form>
