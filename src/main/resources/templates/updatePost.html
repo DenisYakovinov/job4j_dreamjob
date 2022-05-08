@@ -53,9 +53,15 @@
                         <input type="text" class="form-control" name="description" id="description" th:field="*{description}">
                         </label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check class=pb-3">
                         <input type="checkbox" name="visible" class="form-check-input" id="visible">
                         <label class="form-check-label" for="visible">Publish</label>
+                    </div>
+                    <div class="pb-3 my-2">
+                    <label for="city.id">City</label>
+                    <select class="form-control" id="city.id" name="city.id">
+                        <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"> </option>
+                    </select>
                     </div>
                     <button type="submit" class="btn btn-primary  bg-dark border-dark">Save</button>
                 </form>
