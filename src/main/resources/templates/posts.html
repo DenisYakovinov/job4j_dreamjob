@@ -48,6 +48,7 @@
                 <th scope="col">#</th>
                 <th scope="col">name</th>
                 <th scope="col">description</th>
+                <th scope="col">city</th>
                 <th scope="col">created</th>
             </tr>
             </thead>
@@ -67,6 +68,7 @@
                     </span>
                 </td>
                 <td th:text="${post.description}"/>
+                <td th:text="${post.city.name}"/>
                 <td th:text="${post.created}"/>
             </tr>
             </tbody>

@@ -13,11 +13,17 @@ public class Post {
 
     public Post() { }
 
-    public Post(int id, String name, String description, LocalDate created) {
+    public Post(int id, String name, String description, LocalDate created, boolean visible) {
+       this(id, name, description, created, visible, null);
+    }
+
+    public Post(int id, String name, String description, LocalDate created, boolean visible, City city) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.created = created;
+        this.visible = visible;
+        this.city = city;
     }
 
     public int getId() {
@@ -52,20 +58,20 @@ public class Post {
         this.name = name;
     }
 
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
-
     public boolean isVisible() {
         return visible;
     }
 
     public void setVisible(boolean visible) {
         this.visible = visible;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
     @Override

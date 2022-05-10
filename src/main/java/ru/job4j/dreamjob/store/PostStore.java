@@ -18,9 +18,9 @@ public class PostStore {
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
 
     private PostStore() {
-        posts.put(1, new Post(1, "Junior Job", "java dev", LocalDate.now()));
-        posts.put(2, new Post(2, "Middle Job", "java dev", LocalDate.now()));
-        posts.put(3, new Post(3, "Senior Job", "java dev", LocalDate.now()));
+        posts.put(1, new Post(1, "Junior Job", "java dev", LocalDate.now(), false));
+        posts.put(2, new Post(2, "Middle Job", "java dev", LocalDate.now(), false));
+        posts.put(3, new Post(3, "Senior Job", "java dev", LocalDate.now(), false));
         idCounter.addAndGet(posts.size());
     }
 
