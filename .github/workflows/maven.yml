@@ -22,5 +22,8 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+    - name: run db
+      run: docker-compose up -d
+      timeout-minutes: 120
     - name: Build with Maven
       run: mvn -B package --file pom.xml
