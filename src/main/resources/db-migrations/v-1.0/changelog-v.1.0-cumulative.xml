@@ -8,5 +8,5 @@
     <include file="01-changeset-create-posts-table.xml" relativeToChangelogFile="true"/>
     <include file="02-changeset-add-city_column-to-posts.xml" relativeToChangelogFile="true"/>
     <include file="03-changeset-create-candidates-table.xml" relativeToChangelogFile="true"/>
-
+    <include file="04-changeset-create-users-table.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
