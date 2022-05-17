@@ -12,8 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.job4j.dreamjob.model.Candidate;
+import ru.job4j.dreamjob.model.User;
 import ru.job4j.dreamjob.service.CandidateService;
+import ru.job4j.dreamjob.util.SessionUtil;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -27,13 +30,17 @@ public class CandidateController {
       }
 
       @GetMapping("/candidates")
-      public String candidates(Model model) {
+      public String candidates(Model model, HttpSession session) {
             model.addAttribute("candidates", candidateService.findAll());
+            User user = SessionUtil.getUserFromSession(session);
+            model.addAttribute("user", user);
             return "candidates";
       }
 
       @GetMapping("/formAddCandidate")
-      public String addCandidate(Model model) {
+      public String addCandidate(Model model, HttpSession session) {
+            User user = SessionUtil.getUserFromSession(session);
+            model.addAttribute("user", user);
             model.addAttribute("candidate", new Candidate(0, "Fill the field", "fill the field", LocalDate.now()));
             return "addCandidate";
       }
@@ -48,7 +55,9 @@ public class CandidateController {
       }
 
       @GetMapping("/formUpdateCandidate/{candidateID}")
-      public String formUpdateCandidate(Model model, @PathVariable int candidateID) {
+      public String formUpdateCandidate(Model model, @PathVariable int candidateID, HttpSession session) {
+            User user = SessionUtil.getUserFromSession(session);
+            model.addAttribute("user", user);
             model.addAttribute("candidate", candidateService.findById(candidateID));
             return "/updateCandidate";
       }

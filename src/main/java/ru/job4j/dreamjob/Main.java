@@ -4,12 +4,19 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import ru.job4j.dreamjob.util.SessionUtil;
+import ru.job4j.dreamjob.model.User;
 
+import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
 @SpringBootApplication
+@Controller
 public class Main {
 
     private Properties loadDbProperties() {
@@ -44,6 +51,13 @@ public class Main {
         pool.setMaxIdle(10);
         pool.setMaxOpenPreparedStatements(100);
         return pool;
+    }
+
+    @GetMapping ("/")
+    String home(Model model, HttpSession session) {
+        User user = SessionUtil.getUserFromSession(session);
+        model.addAttribute("user", user);
+        return "index";
     }
 
     public static void main(String[] args) {

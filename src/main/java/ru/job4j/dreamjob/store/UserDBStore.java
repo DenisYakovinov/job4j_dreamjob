@@ -29,7 +29,8 @@ public class UserDBStore {
         ) {
             try (ResultSet it = ps.executeQuery()) {
                 while (it.next()) {
-                    users.add(new User(it.getInt("id"), it.getString("email"), it.getString("password")));
+                    users.add(new User(it.getInt("id"), it.getString("name"), it.getString("email"),
+                            it.getString("password")));
                 }
             }
         } catch (SQLException e) {
@@ -40,11 +41,12 @@ public class UserDBStore {
 
     public Optional<User> add(User user) {
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps = cn.prepareStatement("INSERT INTO users (email, password) VALUES (?, ?)",
+             PreparedStatement ps = cn.prepareStatement("INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
                      PreparedStatement.RETURN_GENERATED_KEYS)
         ) {
-            ps.setString(1, user.getEmail());
-            ps.setString(2, user.getPassword());
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getPassword());
             ps.execute();
             try (ResultSet id = ps.getGeneratedKeys()) {
                 if (id.next()) {
@@ -60,30 +62,50 @@ public class UserDBStore {
 
     public void update(User user) {
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps = cn.prepareStatement("UPDATE users SET (email, password) = (?, ?) WHERE id = ?")
+             PreparedStatement ps = cn.prepareStatement("UPDATE users SET (name, email, password) = (?, ?, ?) WHERE id = ?")
         ) {
-            ps.setString(1, user.getEmail());
-            ps.setString(2, user.getPassword());
-            ps.setInt(3, user.getId());
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getPassword());
+            ps.setInt(4, user.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public User findById(int id) {
+    public Optional<User> findById(int id) {
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement("SELECT * FROM users WHERE id = ?")
         ) {
             ps.setInt(1, id);
             try (ResultSet it = ps.executeQuery()) {
                 if (it.next()) {
-                    return new User(it.getInt("id"), it.getString("email"), it.getString("password"));
+                    return Optional.of(new User(it.getInt("id"), it.getString("name"), it.getString("email"),
+                            it.getString("password")));
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return Optional.empty();
+    }
+
+    public Optional<User> findUserByEmailAndPwd(String email, String pass) {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("SELECT * FROM users WHERE email = ? AND password = ?")
+        ) {
+            ps.setString(1, email);
+            ps.setString(2, pass);
+            try (ResultSet it = ps.executeQuery()) {
+                if (it.next()) {
+                    return Optional.of(new User(it.getInt("id"), it.getString("name"), it.getString("email"),
+                            it.getString("password")));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 }

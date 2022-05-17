@@ -7,11 +7,14 @@ public class User {
     private String email;
     private String password;
 
+    private String name;
+
     public User() {
     }
 
-    public User(int id, String email, String password) {
+    public User(int id, String name, String email, String password) {
         this.id = id;
+        this.name = name;
         this.email = email;
         this.password = password;
     }
@@ -22,6 +25,14 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
