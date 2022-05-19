@@ -1,10 +1,9 @@
-package ru.job4j.dreamjob;
+package ru.job4j.dreamjob.store;
 
 import org.junit.jupiter.api.Test;
+import ru.job4j.dreamjob.Main;
 import ru.job4j.dreamjob.model.City;
 import ru.job4j.dreamjob.model.Post;
-import ru.job4j.dreamjob.store.PostDBStore;
-
 import java.time.LocalDate;
 
 import static org.hamcrest.MatcherAssert.assertThat;

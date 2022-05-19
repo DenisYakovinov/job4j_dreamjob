@@ -54,8 +54,7 @@ public class PostController {
     public String formUpdatePost(Model model, @PathVariable("postId") int id, HttpSession session) {
         User user = SessionUtil.getUserFromSession(session);
         model.addAttribute("user", user);
-        Post post = postService.findById(id);
-        model.addAttribute("post", post);
+        model.addAttribute("post", postService.findById(id));
         model.addAttribute("cities", cityService.getAllCities());
         return "updatePost";
     }
