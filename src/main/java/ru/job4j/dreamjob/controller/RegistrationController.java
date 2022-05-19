@@ -28,7 +28,7 @@ public class RegistrationController {
             model.addAttribute("message", "the email is already registered");
             return "redirect:/registerFail";
         }
-        return "redirect:/registerSuccess";
+        return "redirect:/loginPage";
     }
 
     @GetMapping("/registration")
